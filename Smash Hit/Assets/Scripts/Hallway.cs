@@ -11,5 +11,4 @@ public class Hallway : MonoBehaviour
             GameObject.FindObjectOfType<HallwayBuilder>().BuildContinue();
         }
     }
-
 }

@@ -16,7 +16,7 @@ public class ThrowObject : MonoBehaviour
         mainCamera = Camera.main;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetButtonDown("Fire1") && ballPrefab != null)
         {
@@ -39,7 +39,7 @@ public class ThrowObject : MonoBehaviour
         // Рассчитываем направление для броска
         Vector3 throwDirection = (mousePosition - transform.position).normalized;
 
-        // Создаем копию объекта, который бросимё       
+        // Создаем копию объекта, который бросим      
         GameObject newBall = Instantiate(ballPrefab);
         newBall.transform.position = transform.position;
 
@@ -53,5 +53,20 @@ public class ThrowObject : MonoBehaviour
 
         GameManager.BallCount--;
         OnThrow.Invoke();
+    }
+
+    public void ThrowAway(int number = 10, float force = 10f)
+    {
+        for (int i = 0; i < number; i++)
+        {
+            GameObject newBall = Instantiate(ballPrefab);
+            newBall.transform.position = transform.position;
+
+            if (newBall.GetComponent<Rigidbody>() != null)
+            {
+                Rigidbody rb = newBall.GetComponent<Rigidbody>();
+                rb.AddForce(Vector3.forward * force, ForceMode.VelocityChange);
+            }
+        }
     }
 }

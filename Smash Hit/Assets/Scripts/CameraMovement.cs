@@ -21,5 +21,4 @@ public class CameraMovement : MonoBehaviour
         MoveSpeed = 0;
         OnMoveBreak.Invoke();
     }
-
 }

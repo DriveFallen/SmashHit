@@ -10,11 +10,11 @@ public class RandomActivation : MonoBehaviour
 
         if (rnd < percent)
         {
-            this.gameObject.SetActive(true);
+            gameObject.SetActive(true);
         }
         else
         {
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 }
